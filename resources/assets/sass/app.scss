@@ -1,0 +1,76 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+
+
+
+
+html, body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  height: 100vh;
+  margin: 0;
+}
+
+#page {
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  h2 {
+    color: #999;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2em;
+    text-align: center;
+  }
+}
+
+#logo {
+  width: 400px;
+}
+//
+//.full-height {
+//  height: 100vh;
+//}
+//
+//.flex-center {
+//  align-items: center;
+//  display: flex;
+//  justify-content: center;
+//}
+//
+//.position-ref {
+//  position: relative;
+//}
+//
+//.top-right {
+//  position: absolute;
+//  right: 10px;
+//  top: 18px;
+//}
+//
+//.content {
+//  text-align: center;
+//}
+//
+//.title {
+//  font-size: 84px;
+//}
+//
+//.links > a {
+//  color: #636b6f;
+//  padding: 0 25px;
+//  font-size: 12px;
+//  font-weight: 600;
+//  letter-spacing: .1rem;
+//  text-decoration: none;
+//  text-transform: uppercase;
+//}
+//
+//.m-b-md {
+//  margin-bottom: 30px;
+//}
