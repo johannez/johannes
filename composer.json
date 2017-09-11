@@ -4,17 +4,25 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "url": "https://github.com/johannez/harvest-api.git",
+            "type": "git"
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "johannez/harvest-api": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~6.0",
-        "filp/whoops": "~2.0"
+        "filp/whoops": "~2.0",
+        "kint-php/kint": "~2.0"
     },
     "autoload": {
         "classmap": [
