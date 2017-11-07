@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
+class ComposerStaticInit20627dab7088005d2e6d42b91861f6f6
 {
     public static $files = array (
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
@@ -14,8 +14,8 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
@@ -77,10 +77,6 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
         ),
-        'J' => 
-        array (
-            'Johannez\\Harvest\\' => 17,
-        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
@@ -111,6 +107,10 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         array (
             'Cron\\' => 5,
             'Carbon\\' => 7,
+        ),
+        'B' => 
+        array (
+            'BestIt\\Harvest\\' => 15,
         ),
         'A' => 
         array (
@@ -233,10 +233,6 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
-        'Johannez\\Harvest\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/johannez/harvest-api/src',
-        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -288,6 +284,10 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'BestIt\\Harvest\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bestit/harvest-api/src',
         ),
         'App\\' => 
         array (
@@ -354,6 +354,49 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'BestIt\\Harvest\\Client' => __DIR__ . '/..' . '/bestit/harvest-api/src/Client.php',
+        'BestIt\\Harvest\\Endpoints\\BaseEndpoint' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/BaseEndpoint.php',
+        'BestIt\\Harvest\\Endpoints\\Clients' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Clients.php',
+        'BestIt\\Harvest\\Endpoints\\Contacts' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Contacts.php',
+        'BestIt\\Harvest\\Endpoints\\Expenses' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Expenses.php',
+        'BestIt\\Harvest\\Endpoints\\Projects' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Projects.php',
+        'BestIt\\Harvest\\Endpoints\\Tasks' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Tasks.php',
+        'BestIt\\Harvest\\Endpoints\\Timesheet' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Timesheet.php',
+        'BestIt\\Harvest\\Endpoints\\Users' => __DIR__ . '/..' . '/bestit/harvest-api/src/Endpoints/Users.php',
+        'BestIt\\Harvest\\Facade\\Harvest' => __DIR__ . '/..' . '/bestit/harvest-api/src/Facade/Harvest.php',
+        'BestIt\\Harvest\\HarvestServiceProvider' => __DIR__ . '/..' . '/bestit/harvest-api/src/HarvestServiceProvider.php',
+        'BestIt\\Harvest\\Models\\BaseModel' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/BaseModel.php',
+        'BestIt\\Harvest\\Models\\Clients\\Client' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Clients/Client.php',
+        'BestIt\\Harvest\\Models\\Clients\\Clients' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Clients/Clients.php',
+        'BestIt\\Harvest\\Models\\Contacts\\Contact' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Contacts/Contact.php',
+        'BestIt\\Harvest\\Models\\Contacts\\Contacts' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Contacts/Contacts.php',
+        'BestIt\\Harvest\\Models\\Expenses\\Categories' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Expenses/Categories.php',
+        'BestIt\\Harvest\\Models\\Expenses\\Category' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Expenses/Category.php',
+        'BestIt\\Harvest\\Models\\Expenses\\Expense' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Expenses/Expense.php',
+        'BestIt\\Harvest\\Models\\Expenses\\Expenses' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Expenses/Expenses.php',
+        'BestIt\\Harvest\\Models\\ModelCollection' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/ModelCollection.php',
+        'BestIt\\Harvest\\Models\\Projects\\Project' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/Project.php',
+        'BestIt\\Harvest\\Models\\Projects\\Projects' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/Projects.php',
+        'BestIt\\Harvest\\Models\\Projects\\Task' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/Task.php',
+        'BestIt\\Harvest\\Models\\Projects\\Tasks' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/Tasks.php',
+        'BestIt\\Harvest\\Models\\Projects\\User' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/User.php',
+        'BestIt\\Harvest\\Models\\Projects\\Users' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Projects/Users.php',
+        'BestIt\\Harvest\\Models\\Reports\\DayEntries' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Reports/DayEntries.php',
+        'BestIt\\Harvest\\Models\\Reports\\DayEntry' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Reports/DayEntry.php',
+        'BestIt\\Harvest\\Models\\Reports\\Expense' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Reports/Expense.php',
+        'BestIt\\Harvest\\Models\\Reports\\Expenses' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Reports/Expenses.php',
+        'BestIt\\Harvest\\Models\\Tasks\\Task' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Tasks/Task.php',
+        'BestIt\\Harvest\\Models\\Tasks\\Tasks' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Tasks/Tasks.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\DayEntries' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/DayEntries.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\DayEntry' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/DayEntry.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\Project' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/Project.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\Projects' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/Projects.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\Task' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/Task.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\Tasks' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/Tasks.php',
+        'BestIt\\Harvest\\Models\\Timesheet\\Timesheet' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Timesheet/Timesheet.php',
+        'BestIt\\Harvest\\Models\\Users\\User' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Users/User.php',
+        'BestIt\\Harvest\\Models\\Users\\Users' => __DIR__ . '/..' . '/bestit/harvest-api/src/Models/Users/Users.php',
+        'BestIt\\Harvest\\Utils\\Utils' => __DIR__ . '/..' . '/bestit/harvest-api/src/Utils/Utils.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -1804,12 +1847,6 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
-        'Johannez\\Harvest\\Connection' => __DIR__ . '/..' . '/johannez/harvest-api/src/Connection.php',
-        'Johannez\\Harvest\\Resource\\BaseResource' => __DIR__ . '/..' . '/johannez/harvest-api/src/Resource/BaseResource.php',
-        'Johannez\\Harvest\\Resource\\Client' => __DIR__ . '/..' . '/johannez/harvest-api/src/Resource/Client.php',
-        'Johannez\\Harvest\\Resource\\Project' => __DIR__ . '/..' . '/johannez/harvest-api/src/Resource/Project.php',
-        'Johannez\\Harvest\\Resource\\Timesheet' => __DIR__ . '/..' . '/johannez/harvest-api/src/Resource/Timesheet.php',
-        'Johannez\\Harvest\\Resource\\User' => __DIR__ . '/..' . '/johannez/harvest-api/src/Resource/User.php',
         'Kint' => __DIR__ . '/..' . '/kint-php/kint/src/Kint.php',
         'Kint_Object' => __DIR__ . '/..' . '/kint-php/kint/src/Object.php',
         'Kint_Object_Blob' => __DIR__ . '/..' . '/kint-php/kint/src/Object/Blob.php',
@@ -3737,10 +3774,10 @@ class ComposerStaticInite93a553a4a0baa66696816a24c96f59a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite93a553a4a0baa66696816a24c96f59a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite93a553a4a0baa66696816a24c96f59a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite93a553a4a0baa66696816a24c96f59a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite93a553a4a0baa66696816a24c96f59a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit20627dab7088005d2e6d42b91861f6f6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit20627dab7088005d2e6d42b91861f6f6::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit20627dab7088005d2e6d42b91861f6f6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit20627dab7088005d2e6d42b91861f6f6::$classMap;
 
         }, null, ClassLoader::class);
     }

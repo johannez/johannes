@@ -3,10 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
-use Johannez\Harvest\Connection;
 use DateTime;
 use DateInterval;
+use BestIt\Harvest\Client as HarvestClient;
+use BestIt\Harvest\Models\Timesheet\DayEntry;
 
 class SyncHarvest extends Command
 {
@@ -35,17 +35,18 @@ class SyncHarvest extends Command
      *
      * @return void
      */
-    public function __construct(Connection $connection)
+    public function __construct()
     {
         parent::__construct();
 
-        $this->harvest = $connection;
-        $this->account = config('harvest.account');
-        $this->clients = config('harvest.clients');
+//        $this->harvest = $connection;
+        $this->account = config('harvestsync.account');
+        $this->clients = config('harvestsync.clients');
 
         // Set proper credentials for the harvest connection.
         // TODO: Switch this to OAuth.
-        $this->harvest->setAuth($this->account['user'], decrypt($this->account['password']));
+        $this->harvest = new HarvestClient($this->account['url'], $this->account['user'], decrypt($this->account['password']));
+//        $this->harvest->setAuth($this->account['user'], decrypt($this->account['password']));
     }
 
     /**
@@ -61,7 +62,7 @@ class SyncHarvest extends Command
         $client_names = array_keys($this->clients);
 
         $client_name = $this->choice('Which client?', $client_names, 0);
-        $client_id = $this->clients[$client_name]['id'];
+        $client = $this->clients[$client_name];
 
         // Choose the month.
         $month_default = date('Y-m');
@@ -70,8 +71,8 @@ class SyncHarvest extends Command
 
 
         // Collect all entries from the clients.
-        $this->line('Collecting all entries for this client...');
-        $entries = $this->getClientEntries($client_name, $client_id);
+        $this->line('Collecting all entries for ' . $client['name'] . '...');
+        $entries = $this->getClientEntries($client);
 
         $this->line("\n\n---");
 
@@ -79,20 +80,31 @@ class SyncHarvest extends Command
         $this->info('Number of entries: ' . $num_entries);
         $this->info('Hours total: ' . $this->hours_total);
 
-//        d($entries);
-//        d($hours_total);
-//        d(time() - $start_time . ' seconds');
+
+
+//  TODO: Add the created entry info to a database log table.
+//        $test_entry = new DayEntry();
+//        $test_entry->projectId = '8583026';
+//        $test_entry->taskId = '6811596';
+//        $test_entry->notes = 'TEST TEST TEST';
+//        $test_entry->hours = '5.25';
+//        $test_entry->spentAt = '2017-09-23';
+//
+//
+//        print_r($test_entry);
+//        $created_entry = $this->harvest->timesheet()->create($test_entry);
+//        print_r($created_entry);
 
 
         if ($this->confirm('Do you want to sync these entries into your Harvest account?')) {
             $this->line('Syncing all entries into your account...');
-            $this->harvest->setAccount($this->account['id']);
-
+            
             $bar = $this->output->createProgressBar(count($entries));
 
             foreach ($entries as $entry) {
-//                $harvest->timesheet()->create($entry);
-                sleep(1);
+                $created_entry = $this->harvest->timesheet()->create($entry);
+
+//                sleep(1);
                 $bar->advance();
             }
 
@@ -117,58 +129,45 @@ class SyncHarvest extends Command
     }
 
 
-    protected function getClientEntries($client_name, $client_id) {
+    protected function getClientEntries($client) {
         $entries = [];
         $project_names = [];
 
         // Get all projects from the main account for this client.
-        $this->harvest->setAccount($this->account['id']);
-        $projects = $this->harvest->project()->getAll(['client=' . $client_id]);
+        $projects = $this->harvest->projects()->findByClientId($client['id']);
 
-//        d($projects);
 
         foreach ($projects as $p) {
-            $project_names[$p->project->id] = $p->project->name;
+            $project_names[$p->id] = $p->name;
         }
 
-//        d($project_names);
 
-        // Switch to client account.
-        $this->harvest->setAccount($client_name);
-
+        // Create new connection to Harvest for this client.
+        $clientHarvest = new \BestIt\Harvest\Client($client['url'], $client['user'], decrypt($client['password']));
 
         $bar = $this->output->createProgressBar(count($this->days));
 
         foreach ($this->days as $day_month) {
             $day = new DateTime($day_month);
             $hours_day = 0.0;
-            $day_entries = [];
 
-            $doy = intval($day->format('z')) + 1;
-            $year = $day->format('Y');
+            $timesheets = $clientHarvest->timesheet()->all(true, $day);
 
-            $timesheet = $this->harvest->timesheet()->getByDate($doy, $year);
+            if (!empty($timesheets->dayEntries)) {
 
-            if (!empty($timesheet->day_entries)) {
-
-                foreach ($timesheet->day_entries as $de) {
+                foreach ($timesheets->dayEntries as $de) {
 
                     // Check, if there is a project in the main account for this client's client.
                     if ($project_id = array_search($de->client, $project_names)) {
-                        // Create a new entry.
-                        $entries[] = [
-                            'project_id' => $project_id,
-                            'task_id' => $this->account['task_id'],
-                            'notes' => '[Client: ' . $de->client . ', Task: ' . $de->task . '] ' . $de->notes,
-                            'hours' => $de->hours,
-                            'spent_at' => $day_month
-                        ];
 
-                        $day_entries[] = [
-                            'notes' => '[Client: ' . $de->client . ', Task: ' . $de->task . '] ' . $de->notes,
-                            'hours' => $de->hours
-                        ];
+                        $day_entry = new DayEntry();
+                        $day_entry->projectId = $project_id;
+                        $day_entry->taskId = $this->account['task_id'];
+                        $day_entry->notes = '[Client: ' . $de->client . ', Task: ' . $de->task . '] ' . $de->notes;
+                        $day_entry->hours = $de->hours;
+                        $day_entry->spentAt = $day_month;
 
+                        $entries[] = $day_entry;
                         $this->hours_total += $de->hours;
                         $hours_day += $de->hours;
 
@@ -177,7 +176,6 @@ class SyncHarvest extends Command
                         // TODO
                         $this->error('Missing Project: ' . $de->client);
                     }
-
                 }
             }
 

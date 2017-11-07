@@ -6,8 +6,8 @@
     "type": "project",
     "repositories": [
         {
-            "url": "https://github.com/johannez/harvest-api.git",
-            "type": "git"
+            "url": "https://github.com/johannez/harvest-api",
+            "type": "vcs"
         }
     ],
     "require": {
@@ -15,7 +15,7 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "johannez/harvest-api": "dev-master"
+        "bestit/harvest-api": "dev-bugfix-johannez"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
