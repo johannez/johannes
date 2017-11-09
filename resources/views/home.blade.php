@@ -16,7 +16,7 @@
             </svg>
         </div>
 
-        <h2>Under construction...</h2>
+        <h2>Coming soon...</h2>
     </div>
 
 @endsection
