@@ -14,7 +14,5 @@
 
 
 Route::get('/', function () {
-    print \Illuminate\Support\Facades\App::environment();
-
     return view('home');
 });
